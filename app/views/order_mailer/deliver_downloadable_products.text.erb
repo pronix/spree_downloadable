@@ -1,0 +1,16 @@
+Dear Customer,
+
+Please review and retain the following order information for your records.
+
+============================================================
+Order Summary
+============================================================
+<% @order.all_links.each do |link| %>
+  <p><%= link_to link[:name], "http://#{app.host}/product_downloads/#{link[:link]}"%></p>
+<% end %>
+============================================================
+Order Total: <%= number_to_currency @order.total %>
+
+
+Thank you for your business.
+

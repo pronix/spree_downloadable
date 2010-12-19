@@ -1,0 +1,48 @@
+<%= render :partial => 'admin/shared/product_sub_menu' %>
+
+<%= render :partial => 'admin/shared/product_tabs', :locals => {:current => "Downloadables"} %>
+
+<% if !@product.product_download.nil? %>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $(".yui-g").hide();
+  });
+</script>
+<%= link_to 'edit file',"#", :onclick => '$(".yui-g").show();$("#show_link_d").hide();', :id => 'show_link_d'%>
+<% end %>
+<div class="yui-g">
+
+  <div class="yui-u first">
+	<%= form_for(:product_download, :url => { :controller => 'product_downloads', :action => 'create' }, :html => { :multipart => true }) do |f| %>
+	  	<fieldset>
+			<legend>New product_download file</legend>
+				<%= f.label :file, t("file") %> <span class="required">*</span> <br/>
+				<%= f.file_field :attachment %>
+
+			<%= f.field_container :title do %>
+				<%= f.label t("title") %><span> <sup>Defaults to filename</sup></span><br/>
+				<%= f.text_field :title %>
+		  <% end %>
+
+			<%= f.field_container :description do %>
+				<%= f.label t("description") %><br/>
+				<%= f.text_field :description %>
+		  <% end %>
+
+		  <%= f.field_container :viewable_id do %>
+  		  <% if @product.has_variants? %>
+          <%= f.label Variant.human_name + ": " %>
+          <%= f.select :viewable_id, @variants %>
+        <% else %>
+          <%= hidden_field_tag :product_id, @product.id %>
+        <% end %>
+      <% end %>
+
+      <p class="form-buttons">
+        <%= button t("update") %>
+        or <%= link_to t("cancel"), "#", :id => "cancel_link" %>
+      </p>
+		</fieldset>
+	<% end %>
+  </div>
+</div>

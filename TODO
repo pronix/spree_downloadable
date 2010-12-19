@@ -1,0 +1,17 @@
+1. если товар только цифровой то:
+  1. пропускаем адрес доставки и выбор способа доставки - только почту указываем
+  2. после оплаты - сразу высылаем на мало ссылку на скачивание
+
+2. если в заказе не только цифровой:
+  1. не пропускаем доставку, но высылаем на мыло ссылки на скачивание
+
+# 'cart'
+=> 'address'
+=> 'delivery'
+=> 'payment'
+=> 'confirm'
+=> 'complete'
+
+
+Адрес обновляется так
+"order"=>{"bill_address_attributes"=>{"address1"=>"Kaliningrad Matochkina st. 16 rv 34", "city"=>"Kalinigrad", "address2"=>"", "zipcode"=>"238542", "country_id"=>"168", "lastname"=>"Vasilec", "state_name"=>"Kaliningradskaya obl", "firstname"=>"Dmitriy", "phone"=>"9114703828"}, "use_billing"=>"1"}, "state"=>"address"

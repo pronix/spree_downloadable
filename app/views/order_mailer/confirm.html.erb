@@ -1,0 +1,22 @@
+<%= I18n.t "Dear Customer" %>
+
+<%= I18n.t "Please find an invoice for your purchases below" %>
+
+============================================================
+<%= I18n.t "Invoice" %>
+============================================================
+<% for item in @order.line_items -%>
+<%=item.variant.sku %> <%=item.variant.product.name-%> <%= variant_options(item.variant) %> (<%=item.quantity-%>) @ <%= number_to_currency item.price %> = <%= number_to_currency(item.price * item.quantity) %>
+<% if @order.checkout_complete -%>
+<%= render_links(item, :html => false) %>
+<% end -%>
+<% end -%>      
+============================================================
+<%= I18n.t :subtotal %>: <%= number_to_currency @order.item_total %>
+<% @order.adjustments.each do |adjustment| %>
+<%= "#{adjustment.description}: #{number_to_currency adjustment.amount}"%>
+<% end %>
+<%= I18n.t :order_total %>: <%= number_to_currency @order.total %>
+
+
+<%= I18n.t 'Thank you for your business' %>
