@@ -22,6 +22,9 @@ Example
 
 TODO
 ========
-Разобраться в lib/download_app.rb там не меняется статус линка и не учитывается трафик - соответственно скачать можно много раз 
+
+* Разобраться в lib/download_app.rb там не меняется статус линка и не учитывается трафик - соответственно скачать можно много раз 
+* Генерация ссылок на основе line_item
+
 
 Copyright (c) 2010 [pronix.service@gmail.com], released under the New BSD License
